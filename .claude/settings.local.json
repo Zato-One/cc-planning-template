@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:code.claude.com)",
+      "mcp__serena__list_dir",
+      "mcp__serena__get_symbols_overview",
+      "Bash(npm run serve)",
+      "Bash(npm run generate-pdf)",
+      "mcp__serena__think_about_collected_information",
+      "Bash(pdftoppm:*)",
+      "WebSearch",
+      "WebFetch(domain:stackoverflow.com)",
+      "Bash(npm run generate-pdf:paged)",
+      "Bash(npm run serve:paged)",
+      "WebFetch(domain:localhost)",
+      "Bash(lsof:*)",
+      "Bash(xargs kill:*)"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "enabledMcpjsonServers": [
+    "serena"
+  ]
+}
