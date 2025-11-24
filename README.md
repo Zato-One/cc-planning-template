@@ -1,8 +1,20 @@
 # Claude Code Planning Template
 
-A GitHub template repository that provides a structured planning and development infrastructure for Claude Code projects.
+A GitHub template repository that provides a structured planning and development infrastructure for projects developed with Claude Code assistance.
 
 ## Overview
+
+### Purpose
+
+This template helps developers collaborate effectively with Claude Code by providing structured planning workflows and context engineering foundations. Whether you're starting a new project or organizing an existing one, this template enables you to break down complex projects into manageable phases and steps that Claude Code can implement systematically.
+
+The template combines:
+- **Context Engineering**: `CLAUDE.md` provides Claude Code with project-specific guidelines, development principles, and best practices
+- **Structured Planning**: Break down projects into phases and trackable implementation steps
+- **Incremental Development**: Let Claude Code implement features step-by-step with automatic progress tracking
+- **Semantic Code Operations**: MCP integration enables intelligent code understanding and navigation
+
+### How It Works
 
 This template enables developers to plan projects in detail and let Claude Code implement them incrementally, phase by phase and step by step. It includes pre-configured guidance files, custom slash commands, and MCP integration for semantic code operations.
 
@@ -28,6 +40,16 @@ The cleanup workflow runs automatically on the first push to the main branch. Yo
 - **Claude Code Guidance**: Pre-configured CLAUDE.md with best practices and instructions
 - **Serena MCP Integration**: Semantic code understanding and manipulation tools
 - **Incremental Development**: Phase-based and step-based implementation tracking
+
+## Room for Improvement
+
+This template demonstrates core Claude Code capabilities but doesn't yet leverage all available features:
+
+- **Skills**: Custom reusable workflows could be added for common project patterns
+- **Subagents**: Complex tasks could spawn specialized agents for focused operations
+- **Hooks**: Event-driven automation could enhance the development workflow
+
+These features could further enhance the development experience as the template evolves.
 
 ## Getting Started
 
