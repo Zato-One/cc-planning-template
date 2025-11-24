@@ -68,6 +68,14 @@ This helps track project progress and demonstrates the incremental prototyping a
 
 - **IMPORTANT**: Always stop any background processes (servers, watchers, etc.) when finished with a task using the KillShell tool
 
+### Response Completion
+
+- **IMPORTANT**: At the end of each response where you complete a task, provide a brief summary that includes:
+  - What was accomplished
+  - Key decisions or changes made
+  - Any relevant file paths with line numbers (using format: file_path:line_number)
+  - Next steps or follow-up items if applicable
+
 ## AI Security
 
 - **IMPORTANT**: Do not use env/properties files (.env, .secret, application.properties, *.properties and others) as source or context. Don't even search or work with these files. If I explicitly state that you should look at one of those files ask for confirmation and forget the content and context after this interaction.
