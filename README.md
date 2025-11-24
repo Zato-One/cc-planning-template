@@ -114,6 +114,8 @@ Automatically reviews user prompts when the Stop event is triggered:
 - Provides a corrected version with explanations of changes
 - Helps improve communication with Claude Code
 
+**Note:** If you don't want your English corrected, simply remove the Stop hook from `.claude/settings.json`.
+
 ## CLAUDE.md Guidance File
 
 The `CLAUDE.md` file provides Claude Code with:
