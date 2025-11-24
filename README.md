@@ -17,6 +17,10 @@ This template enables developers to plan projects in detail and let Claude Code 
 
 The cleanup workflow runs automatically on the first push to the main branch. You'll get a clean slate to start your project without any template-specific content.
 
+**Note:** If you prefer a different license type (Apache, GPL, etc.), you can either:
+- Edit the workflow file (`.github/workflows/template-cleanup.yml`) before your first push to main
+- Or simply replace the LICENSE file after the automatic cleanup completes
+
 ## Features
 
 - **Structured Planning Workflow**: From initial brainstorming to detailed implementation plans
