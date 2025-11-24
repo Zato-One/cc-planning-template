@@ -124,7 +124,7 @@ The `CLAUDE.md` file provides Claude Code with:
 - Security best practices
 - Documentation guidelines
 - Over-engineering avoidance rules
-- Response completion guidelines (includes instructions to provide task summaries)
+- English grammar review guidelines (provides feedback on prompt clarity and style)
 
 Claude Code automatically reads and follows these instructions when working in this repository.
 
