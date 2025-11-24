@@ -1,0 +1,115 @@
+name: Template Cleanup
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    if: github.event.repository.name != 'cc-planning-template'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Remove template files
+        run: |
+          rm -f README.md
+          rm -f LICENSE
+
+      - name: Create new README.md
+        run: |
+          cat > README.md << 'EOF'
+          # ${{ github.event.repository.name }}
+
+          ## Overview
+
+          [Add a brief description of your project here]
+
+          ## Features
+
+          - [Feature 1]
+          - [Feature 2]
+          - [Feature 3]
+
+          ## Getting Started
+
+          ### Prerequisites
+
+          - [List prerequisites here]
+
+          ### Installation
+
+          [Add installation instructions]
+
+          ### Usage
+
+          [Add usage instructions]
+
+          ## Project Structure
+
+          [Describe your project structure]
+
+          ## Development
+
+          ### Planning
+
+          This project uses structured planning with Claude Code. See `plan/PLAN.md` for the implementation plan.
+
+          ### Custom Commands
+
+          - `/plan` - Create implementation plan
+          - `/plan-phase <N>` - Create detailed phase plan
+          - `/do-phase <N>` - Implement a phase
+          - `/do-step <N>` - Implement a step
+          - `/ask <question>` - Ask questions without changes
+
+          ## License
+
+          See LICENSE file for details.
+          EOF
+
+      - name: Create new LICENSE
+        run: |
+          cat > LICENSE << 'EOF'
+          MIT License
+
+          Copyright (c) 2025 [Your Name or Organization]
+
+          Permission is hereby granted, free of charge, to any person obtaining a copy
+          of this software and associated documentation files (the "Software"), to deal
+          in the Software without restriction, including without limitation the rights
+          to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+          copies of the Software, and to permit persons to whom the Software is
+          furnished to do so, subject to the following conditions:
+
+          The above copyright notice and this permission notice shall be included in all
+          copies or substantial portions of the Software.
+
+          THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+          IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+          FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+          AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+          LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+          OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+          SOFTWARE.
+          EOF
+
+      - name: Remove cleanup workflow
+        run: |
+          rm -f .github/workflows/template-cleanup.yml
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: initialize project from template" || echo "No changes to commit"
+          git push
