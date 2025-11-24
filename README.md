@@ -114,6 +114,19 @@ Answers questions without modifying files
 - No code or file changes
 - Useful for understanding codebase or clarifying approaches
 
+## Claude Code Hooks
+
+This template includes a pre-configured Stop hook in `.claude/settings.json`.
+
+### Stop Hook
+Automatically reviews user prompts when the Stop event is triggered:
+- Analyzes English grammar, clarity, and style
+- Outputs the original prompt
+- Provides a corrected version with explanations of changes
+- Helps improve communication with Claude Code
+
+**Note:** If you don't want your English corrected, simply remove the Stop hook from `.claude/settings.json`.
+
 ## CLAUDE.md Guidance File
 
 The `CLAUDE.md` file provides Claude Code with:
