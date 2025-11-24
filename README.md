@@ -6,6 +6,21 @@ A GitHub template repository that provides a structured planning and development
 
 This template enables developers to plan projects in detail and let Claude Code implement them incrementally, phase by phase and step by step. It includes pre-configured guidance files, custom slash commands, and MCP integration for semantic code operations.
 
+## 🤖 Automatic Template Cleanup
+
+**When you create a new repository from this template, cleanup happens automatically!**
+
+- ✅ This `README.md` will be **automatically replaced** with a clean starter README for your project
+- ✅ The `LICENSE` file will be **automatically replaced** with a fresh MIT License template
+- ✅ The cleanup workflow removes itself after running
+- ✅ **No manual deletion required** - just create your repo and push to main branch
+
+The cleanup workflow runs automatically on the first push to the main branch. You'll get a clean slate to start your project without any template-specific content.
+
+**Note:** If you prefer a different license type (Apache, GPL, etc.), you can either:
+- Edit the workflow file (`.github/workflows/template-cleanup.yml`) before your first push to main
+- Or simply replace the LICENSE file after the automatic cleanup completes
+
 ## Features
 
 - **Structured Planning Workflow**: From initial brainstorming to detailed implementation plans
@@ -21,10 +36,6 @@ This template enables developers to plan projects in detail and let Claude Code 
 Click "Use this template" on GitHub to create a new repository.
 
 ### 2. Initial Setup
-
-**IMPORTANT**: Before starting development:
-- Either remove this README.md or rewrite it for your specific project
-- Update the LICENSE file with your name/organization or choose a different license
 
 Create an `INITIAL.md` file with all your project details:
 - Brainstorming notes and ideas
