@@ -128,6 +128,8 @@ The `CLAUDE.md` file provides Claude Code with:
 
 Claude Code automatically reads and follows these instructions when working in this repository.
 
+**Note:** If you don't want English grammar corrections, simply remove the "English Grammar Review" section from `CLAUDE.md`.
+
 ## Serena MCP Integration
 
 This template includes Serena MCP server configuration (`.mcp.json`) for:
