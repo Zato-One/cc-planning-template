@@ -23,7 +23,7 @@ Always consult official documentation before implementing features or solving pr
 
 ## Project Architecture
 
-This is a GitHub template for planning and implementing projects with Claude Code using structured workflows.
+This project uses a structured workflow for planning and implementing features with Claude Code.
 
 **Key Files:**
 - `INITIAL.md` - User's project requirements and brainstorming
