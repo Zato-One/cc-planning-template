@@ -68,6 +68,15 @@ This helps track project progress and demonstrates the incremental prototyping a
 
 - **IMPORTANT**: Always stop any background processes (servers, watchers, etc.) when finished with a task using the KillShell tool
 
+### English Grammar Review
+
+- **IMPORTANT**: At the end of each response, review the user's original prompt for English grammar, clarity, and style
+- If you notice any grammatical errors, unclear phrasing, or style improvements:
+  - Provide a brief, polite correction or suggestion
+  - Explain what could be improved and why
+  - Keep feedback concise and helpful, not pedantic
+- If the prompt is clear and well-written, no need to mention grammar
+
 ## AI Security
 
 - **IMPORTANT**: Do not use env/properties files (.env, .secret, application.properties, *.properties and others) as source or context. Don't even search or work with these files. If I explicitly state that you should look at one of those files ask for confirmation and forget the content and context after this interaction.
