@@ -23,47 +23,16 @@ Always consult official documentation before implementing features or solving pr
 
 ## Project Architecture
 
-This is a GitHub template repository for planning and implementing projects with Claude Code. It provides structured planning workflows and custom slash commands to enable incremental, phase-based development.
+This is a GitHub template for planning and implementing projects with Claude Code using structured workflows.
 
-### Core Components
-
-**Planning Files:**
-- `INITIAL.md` - User-created file containing project requirements, brainstorming notes, and initial planning
-- `plan/PLAN.md` - Main implementation plan with phases and numbered steps with checkboxes
-- `plan/phases/PHASE_0X.md` - Optional detailed plans for specific phases
-
-**Configuration:**
-- `CLAUDE.md` - This file, providing guidance to Claude Code
-- `.mcp.json` - Serena MCP server configuration for semantic code operations
+**Key Files:**
+- `INITIAL.md` - User's project requirements and brainstorming
+- `plan/PLAN.md` - Main plan with phases and numbered steps (checkboxes: `- [ ] **Step X**: Description`)
+- `plan/phases/PHASE_0X.md` - Optional detailed phase plans
 - `.claude/commands/` - Custom slash command definitions
+- `.mcp.json` - Serena MCP server configuration
 
-**Automation:**
-- `.github/workflows/template-cleanup.yml` - Automatically cleans up template-specific content on first push to main branch
-
-### Planning Workflow Architecture
-
-The template follows a structured workflow:
-
-1. **Initial Planning**: User creates `INITIAL.md` with project requirements and goals
-2. **Plan Generation**: `/plan` command analyzes requirements and creates `plan/PLAN.md` with phases and numbered steps
-3. **Optional Detailed Planning**: `/plan-phase <N>` creates detailed implementation guidance for specific phases
-4. **Implementation**: `/do-phase <N>` or `/do-step <N>` implements work and automatically updates checkboxes
-5. **Progress Tracking**: Checkboxes in `plan/PLAN.md` track completion status across all phases
-
-### Directory Structure
-
-After setup, projects will have:
-- `plan/PLAN.md` - Master plan with all phases and steps
-- `plan/phases/PHASE_01.md`, `PHASE_02.md`, etc. - Detailed phase plans (optional)
-- Step numbers are unique across the entire plan (not reset per phase)
-- Checkboxes format: `- [ ] **Step X**: Description`
-
-### Template Initialization
-
-This is a GitHub template repository. When users create a new repository from this template:
-- The cleanup workflow automatically replaces README.md and LICENSE on first push to main
-- CLAUDE.md, custom commands, and MCP configuration remain intact
-- Users should create INITIAL.md with their project requirements to begin
+**Workflow:** Create INITIAL.md → `/plan` generates plan/PLAN.md → `/do-phase` or `/do-step` implements and updates checkboxes
 
 ## Development Workflow
 
@@ -95,52 +64,17 @@ This helps track project progress and demonstrates the incremental prototyping a
 
 ## Custom Slash Commands
 
-This repository includes custom slash commands to automate planning and implementation workflows. These commands are defined in `.claude/commands/` and are available when working in this repository.
+**`/plan`** - Creates `plan/PLAN.md` from INITIAL.md with phases and steps (run first)
 
-### Available Commands
+**`/plan-phase <N>`** - Creates detailed `plan/phases/PHASE_0X.md` (optional, recommended for complex phases)
 
-**`/plan`** - Create comprehensive implementation plan
-- Analyzes `INITIAL.md`, `README.md`, and `CLAUDE.md` to understand project requirements
-- Creates `plan/PLAN.md` with phases and numbered steps with checkboxes
-- Must be run first before other planning/implementation commands
-- Focuses on incremental, prototyping-focused approach
+**`/do-phase [N]`** - Implements all steps in phase N, updates checkboxes (finds next phase if N omitted)
 
-**`/plan-phase <phase-number>`** - Create detailed phase plan
-- Creates `plan/phases/PHASE_0X.md` with granular implementation details
-- Optional but recommended for complex phases
-- Requires `plan/PLAN.md` to exist (run `/plan` first)
-- Referenced by `/do-phase` and `/do-step` for implementation guidance
+**`/do-step [N]`** - Implements step N, updates checkbox (finds next step if N omitted)
 
-**`/do-phase [phase-number]`** - Implement entire phase
-- Implements all steps in the specified phase sequentially
-- If no phase number provided, finds and implements next phase with uncompleted steps
-- Skips already completed steps (marked with `[x]`)
-- Updates checkboxes in `plan/PLAN.md` automatically after each step
-- Verifies each step before proceeding to next
+**`/ask <question>`** - Answers questions without modifying files
 
-**`/do-step [step-number]`** - Implement single step
-- Implements one specific step from the plan
-- If no step number provided, finds and implements next uncompleted step
-- Updates checkbox immediately after completion
-- Updates progress counters if present in plan
-
-**`/ask <your question>`** - Ask questions without modifications
-- Information-only mode - no code or file changes
-- Useful for understanding codebase or clarifying approaches before implementation
-
-### Command Dependencies
-
-**IMPORTANT**: Commands have dependencies that must be respected:
-1. Run `/plan` before any other commands
-2. Run `/plan-phase <N>` before `/do-phase <N>` or `/do-step` in that phase (optional but recommended)
-3. The `/do-*` commands will prompt if required files are missing
-
-### Automatic Step Finding
-
-Both `/do-phase` and `/do-step` can operate without arguments:
-- They will automatically find the next uncompleted work in sequential order
-- Useful for continuing implementation without tracking which step is next
-- Simply run `/do-step` repeatedly to work through the plan incrementally
+**Dependencies:** Run `/plan` first, then optionally `/plan-phase <N>` before implementing that phase
 
 ## Task Execution Guidelines
 
@@ -177,38 +111,7 @@ Both `/do-phase` and `/do-step` can operate without arguments:
 
 ## MCP Integration
 
-This repository includes pre-configured Serena MCP (Model Context Protocol) server integration for semantic code understanding and manipulation.
-
-### What is Serena MCP?
-
-Serena is an MCP server that provides semantic code operations, enabling Claude Code to:
-- Understand code at the symbol level (functions, classes, variables) rather than just text
-- Navigate codebases efficiently using semantic relationships
-- Perform token-efficient exploration of large codebases
-- Execute intelligent code search and operations
-
-### Configuration
-
-The `.mcp.json` file is pre-configured with Serena MCP server settings:
-- Uses `uvx` to run Serena from its GitHub repository
-- Configured for "ide-assistant" context
-- No additional setup required - works out of the box with Claude Code
-
-### Available MCP Tools
-
-Serena provides tools prefixed with `mcp__serena__*`:
-- `mcp__serena__list_dir` - List directory contents semantically
-- `mcp__serena__get_symbols_overview` - Get overview of code symbols
-- `mcp__serena__activate_project` - Activate project for semantic operations
-- `mcp__serena__find_file` - Find files by name or pattern
-- `mcp__serena__find_symbol` - Find symbols (functions, classes) in codebase
-- `mcp__serena__search_for_pattern` - Search for code patterns semantically
-- `mcp__serena__think_about_collected_information` - Analyze collected code information
-- `mcp__serena__insert_after_symbol` - Insert code after specific symbols
-
-### Usage
-
-Claude Code automatically has access to these MCP tools when working in this repository. The tools enable more intelligent code exploration and manipulation compared to text-based search alone.
+This repository includes Serena MCP server (`.mcp.json`) for semantic code operations. Tools prefixed `mcp__serena__*` enable symbol-level code understanding, intelligent search, and token-efficient codebase exploration. No setup required - works automatically with Claude Code.
 
 ## Documentation Guidelines
 
