@@ -9,9 +9,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Some sections of this document are inspired by or adapted from Cole Medin's CLAUDE.md template:
 - Original work: https://github.com/coleam00/context-engineering-intro
 - Copyright (c) 2025 Cole Medin
-- Licensed under MIT License
-
-The MIT License permits use, modification, and distribution with attribution. See the original repository for the complete license text.
 
 ---
 
